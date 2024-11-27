@@ -15,26 +15,16 @@ class DUNGEONCRAWLER_API UCharacterRotatingComponent : public UActorComponent
 private:
 	UPROPERTY()
 	class ADungeonCharacter *Character = nullptr;
-
-	UPROPERTY(EditDefaultsOnly)
-	float HalfDeadZoneAngle = 30;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess))
 	UCameraComponent *CharacterCamera = nullptr;
 
 protected:
-	FVector LocationCameraPointingAt;
-	FVector InputOfThisFrame;
-	
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
 	UCharacterRotatingComponent();
 
-	void Rotate(const FVector2D Input);
-	FVector GetInputOfThisFrame() const { return InputOfThisFrame; }
-
-	UFUNCTION(BlueprintCallable)
-	FVector GetLocationCameraPointingAt() const { return LocationCameraPointingAt; }
+	void Rotate(const FVector2D Input) const;
 };
