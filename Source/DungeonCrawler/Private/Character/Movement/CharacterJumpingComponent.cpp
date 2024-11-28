@@ -1,7 +1,7 @@
 // Copyright Atennop. All Rights Reserved.
 
-#include "DungeonCrawler/Public/Character/Movement/CharacterJumpingComponent.h"
-#include "DungeonCrawler/Public/Character/DungeonCharacter.h"
+#include "Character/Movement/CharacterJumpingComponent.h"
+#include "Character/DungeonCharacter.h"
 
 UCharacterJumpingComponent::UCharacterJumpingComponent()
 {

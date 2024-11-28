@@ -13,7 +13,17 @@ UCLASS()
 class DUNGEONCRAWLER_API ADungeonCharacter : public ACharacter
 {
 	GENERATED_BODY()
+	
+public:
+	ADungeonCharacter();
 
+	UCharacterMovingComponent *GetMovingComponent() const { return MovingComponent; }
+	UCharacterRotatingComponent *GetRotatingComponent() const { return RotatingComponent; }
+	UCharacterJumpingComponent *GetJumpingComponent() const { return JumpingComponent; }
+	
+protected:
+	virtual void BeginPlay() override;
+	
 private:
 	UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
 	UCharacterMovingComponent *MovingComponent = nullptr;
@@ -23,14 +33,4 @@ private:
 
 	UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
 	UCharacterJumpingComponent *JumpingComponent = nullptr;
-
-protected:
-	virtual void BeginPlay() override;
-	
-public:
-	ADungeonCharacter();
-
-	UCharacterMovingComponent *GetMovingComponent() const { return MovingComponent; }
-	UCharacterRotatingComponent *GetRotatingComponent() const { return RotatingComponent; }
-	UCharacterJumpingComponent *GetJumpingComponent() const { return JumpingComponent; }
 };

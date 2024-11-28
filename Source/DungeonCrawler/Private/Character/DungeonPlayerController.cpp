@@ -1,16 +1,12 @@
 ﻿// Copyright Atennop. All Rights Reserved.
 
-#include "DungeonCrawler/Public/Character/DungeonPlayerController.h"
+#include "Character/DungeonPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 
-void ADungeonPlayerController::OnPossess(APawn *PossessingPawn)
+void ADungeonPlayerController::SetupInputComponent()
 {
-	Super::OnPossess(PossessingPawn);
-	PossessedCharacter = Cast<ADungeonCharacter>(PossessingPawn);
-
-	if (!PossessedCharacter)
-		return;
+	Super::SetupInputComponent();
 
 	if (const auto Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
@@ -23,6 +19,12 @@ void ADungeonPlayerController::OnPossess(APawn *PossessingPawn)
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ADungeonPlayerController::CallRotate);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ADungeonPlayerController::CallStartJumping);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ADungeonPlayerController::CallStopJumping);
+}
+
+void ADungeonPlayerController::AcknowledgePossession(APawn* InPawn)
+{
+	Super::AcknowledgePossession(InPawn);
+	PossessedCharacter = Cast<ADungeonCharacter>(InPawn);
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst

@@ -1,6 +1,6 @@
 ﻿// Copyright Atennop. All Rights Reserved.
 
-#include "DungeonCrawler/Public/Character/DungeonCharacter.h"
+#include "Character/DungeonCharacter.h"
 
 ADungeonCharacter::ADungeonCharacter()
 {

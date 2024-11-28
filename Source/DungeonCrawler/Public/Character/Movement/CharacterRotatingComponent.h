@@ -11,20 +11,20 @@ UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class DUNGEONCRAWLER_API UCharacterRotatingComponent : public UActorComponent
 {
 	GENERATED_BODY()
+	
+public:
+	UCharacterRotatingComponent();
 
+	void Rotate(const FVector2D Input) const;
+	
+protected:
+	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	
 private:
 	UPROPERTY()
 	class ADungeonCharacter *Character = nullptr;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess))
 	UCameraComponent *CharacterCamera = nullptr;
-
-protected:
-	virtual void BeginPlay() override;
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-public:
-	UCharacterRotatingComponent();
-
-	void Rotate(const FVector2D Input) const;
 };

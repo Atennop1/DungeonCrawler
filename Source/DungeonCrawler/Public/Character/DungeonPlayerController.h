@@ -13,6 +13,10 @@ UCLASS()
 class DUNGEONCRAWLER_API ADungeonPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+	
+protected:
+	virtual void SetupInputComponent() override;
+	virtual void AcknowledgePossession(APawn* InPawn) override;
 
 private:
 	UPROPERTY()
@@ -35,6 +39,4 @@ private:
 	void CallStartJumping(const FInputActionValue &Value);
 	void CallStopJumping(const FInputActionValue &Value);
 
-protected:
-	virtual void OnPossess(APawn *PossessingPawn) override;
 };

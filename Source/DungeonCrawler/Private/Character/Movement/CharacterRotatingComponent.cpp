@@ -1,7 +1,7 @@
 ﻿// Copyright Atennop. All Rights Reserved.
 
-#include "DungeonCrawler/Public/Character/Movement/CharacterRotatingComponent.h"
-#include "DungeonCrawler/Public/Character/DungeonCharacter.h"
+#include "Character/Movement/CharacterRotatingComponent.h"
+#include "Character/DungeonCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 UCharacterRotatingComponent::UCharacterRotatingComponent()

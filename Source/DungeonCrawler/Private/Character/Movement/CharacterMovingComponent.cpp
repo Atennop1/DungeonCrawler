@@ -1,7 +1,8 @@
 ﻿// Copyright Atennop. All Rights Reserved.
 
-#include "DungeonCrawler/Public/Character/Movement/CharacterMovingComponent.h"
-#include "DungeonCrawler/Public/Character/DungeonCharacter.h"
+#include "Character/Movement/CharacterMovingComponent.h"
+#include "Character/DungeonCharacter.h"
+#include "Kismet/KismetMathLibrary.h"
 
 UCharacterMovingComponent::UCharacterMovingComponent()
 {
@@ -17,6 +18,6 @@ void UCharacterMovingComponent::BeginPlay()
 
 void UCharacterMovingComponent::Move(const FVector2D Value) const
 {
-	 Character->AddMovementInput(Character->GetActorRightVector(), Value.X);
-	 Character->AddMovementInput(Character->GetActorForwardVector(), Value.Y);
+	Character->AddMovementInput(UKismetMathLibrary::GetRightVector(Character->GetControlRotation()), Value.X);
+	Character->AddMovementInput(UKismetMathLibrary::GetForwardVector(Character->GetControlRotation()), Value.Y);
 }

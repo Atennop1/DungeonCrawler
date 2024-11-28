@@ -11,14 +11,14 @@ class DUNGEONCRAWLER_API UCharacterMovingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-private:
-	UPROPERTY()
-	class ADungeonCharacter *Character = nullptr;
-
-protected:
-	virtual void BeginPlay() override;
-	
 public:
 	UCharacterMovingComponent();
 	void Move(const FVector2D Input) const;
+	
+protected:
+	virtual void BeginPlay() override;
+	
+private:
+	UPROPERTY()
+	class ADungeonCharacter *Character = nullptr;
 };
